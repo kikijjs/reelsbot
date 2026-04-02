@@ -21,5 +21,21 @@ class Settings(BaseSettings):
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
 
+    # Instagram (Meta Graph API)
+    meta_app_id: str = ""
+    meta_app_secret: str = ""
+    meta_access_token: str = ""
+    meta_instagram_user_id: str = ""
+
+    # YouTube (Data API v3)
+    google_client_id: str = ""
+    google_client_secret: str = ""
+    youtube_refresh_token: str = ""
+
+    # TikTok (Content Posting API)
+    tiktok_client_key: str = ""
+    tiktok_client_secret: str = ""
+    tiktok_access_token: str = ""
+
 
 settings = Settings()
