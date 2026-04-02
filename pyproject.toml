@@ -1,0 +1,29 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["alembic/", "mobile/", "dashboard/web/", ".venv/"]
+
+[tool.ruff.lint]
+# E: pycodestyle errors, F: pyflakes, I: isort, W: warnings
+select = ["E", "F", "I", "W"]
+ignore = [
+    "E501",   # line too long (black이 처리)
+    "F401",   # unused imports (일부 __init__.py 에서 re-export 용도)
+]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+exclude = '''
+/(
+    alembic
+  | mobile
+  | dashboard/web
+  | \.venv
+)/
+'''
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["."]
+python_files = ["test_*.py"]
