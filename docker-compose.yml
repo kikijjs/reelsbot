@@ -133,7 +133,7 @@ services:
       context: ./dashboard/web
       dockerfile: Dockerfile.web
       args:
-        VITE_API_BASE_URL: "http://localhost:8000"
+        VITE_API_URL: "http://localhost:8000"
     ports:
       - "3000:80"
     depends_on:

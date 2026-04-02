@@ -5,3 +5,10 @@ media/
 *.mp4
 *.mp3
 *.wav
+
+# Frontend
+node_modules/
+dist/
+dashboard/web/node_modules/
+dashboard/web/dist/
+mobile/node_modules/

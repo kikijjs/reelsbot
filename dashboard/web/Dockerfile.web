@@ -1,12 +1,14 @@
 # ── 빌드 스테이지 ─────────────────────────────────────────────────────────
 FROM node:20-alpine AS builder
 
-ARG VITE_API_BASE_URL=http://localhost:8000
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+# 코드에서 import.meta.env.VITE_API_URL 로 읽음
+ARG VITE_API_URL=http://localhost:8000
+ENV VITE_API_URL=$VITE_API_URL
 
 WORKDIR /app
-COPY package.json .
-RUN npm install
+# lockfile 먼저 복사 → npm ci로 재현 가능한 설치
+COPY package.json package-lock.json ./
+RUN npm ci --prefer-offline
 COPY . .
 RUN npm run build
 
