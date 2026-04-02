@@ -144,6 +144,9 @@ def upload_job(self, job_id_str: str):
                     await db.commit()
                     logger.info("업로드 완료: job_id=%s post_url=%s", job_id, result_obj.post_url)
                     notify_success(job_id_str, platform, result_obj.post_url)
+                    # 24h / 72h 성과 수집 예약
+                    from analytics.tasks import schedule_analytics_for_job
+                    schedule_analytics_for_job(job_id_str)
                 else:
                     raise RuntimeError(result_obj.error_message or "업로드 실패")
 
